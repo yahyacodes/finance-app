@@ -11,6 +11,7 @@ import {
   deleteDoc,
   doc,
 } from "firebase/firestore";
+import { useNavigate } from "react-router-dom";
 
 const Income = () => {
   const [data, setData] = useState([]);
@@ -21,6 +22,7 @@ const Income = () => {
   const [amountVal, setAmountVal] = useState(0);
   const [desVal, setDesVal] = useState("");
   const [currentDate, setCurrentDate] = useState(new Date());
+  const navigate = useNavigate();
 
   const formatDate = (date) => {
     const day = date.getDate();
@@ -42,13 +44,13 @@ const Income = () => {
       source: sourceVal,
       date: formatDate(newDate),
     });
-    window.location.reload();
+    navigate("/income");
   };
 
   const handleDelete = async (id) => {
     const deleteIncome = doc(db, "income", id);
     await deleteDoc(deleteIncome);
-    window.location.reload();
+    navigate("/income");
   };
 
   useEffect(() => {
