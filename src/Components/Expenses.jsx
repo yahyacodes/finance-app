@@ -45,13 +45,13 @@ const Expenses = () => {
       source: sourceVal,
       date: formatDate(newDate),
     });
-    navigate("/expenses");
+    navigate(0);
   };
 
   const handleDelete = async (id) => {
     const deleteIncome = doc(db, "expenses", id);
     await deleteDoc(deleteIncome);
-    navigate("/expenses");
+    navigate(0);
   };
 
   // Fetching expenses

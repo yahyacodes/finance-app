@@ -44,13 +44,13 @@ const Savings = () => {
       source: sourceVal,
       date: formatDate(newDate),
     });
-    navigate("/savings");
+    navigate(0);
   };
 
   const handleDelete = async (id) => {
     const deleteIncome = doc(db, "savings", id);
     await deleteDoc(deleteIncome);
-    navigate("/savings");
+    navigate(0);
   };
 
   useEffect(() => {
