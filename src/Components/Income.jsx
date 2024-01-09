@@ -44,13 +44,13 @@ const Income = () => {
       source: sourceVal,
       date: formatDate(newDate),
     });
-    navigate(0);
+    navigate("income");
   };
 
   const handleDelete = async (id) => {
     const deleteIncome = doc(db, "income", id);
     await deleteDoc(deleteIncome);
-    navigate(0);
+    navigate("income");
   };
 
   useEffect(() => {
