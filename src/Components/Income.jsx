@@ -44,13 +44,23 @@ const Income = () => {
       source: sourceVal,
       date: formatDate(newDate),
     });
-    navigate("/income");
+    let newData = [
+      ...data,
+      {
+        amount: amountVal,
+        description: desVal,
+        source: sourceVal,
+        date: formatDate(newDate),
+      },
+    ];
+    setData(newData);
   };
 
   const handleDelete = async (id) => {
     const deleteIncome = doc(db, "income", id);
     await deleteDoc(deleteIncome);
-    navigate("/income");
+    let remaining = data.filter((item) => item.id !== id);
+    setData(remaining);
   };
 
   useEffect(() => {
